@@ -164,6 +164,20 @@ body {
         }
 
 /* Settings Page */
+      #userInput{
+        display: flex;
+        margin-top: 2%;
+        font-size: 1.15vw;
+      }
+        #userInput label{
+          flex: .65;
+          margin-left: 6vw;
+        }
+        #userInput input{
+          flex: 2;
+          border-style: none;
+          border-bottom: 1px solid #282c34;
+        }
       #titleInput{
         display: flex;
         margin-top: 2%;

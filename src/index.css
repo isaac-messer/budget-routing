@@ -14,17 +14,40 @@ code {
 
 nav {
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
+  padding: 1%;
   margin-bottom: 8%;
   border-bottom: 2px solid #000;
   border-radius: 5%;
   background-color: aliceblue;
-  padding: 16px 32px;
 }
+  nav #titleInfo{
+    padding: 0 7%;
+  }
+    nav #titleInfo h3{
+      margin: 0;
+      font-size: 1.5vw
+    }
+  nav #navInfo{
+    padding-left: 15%;
+  }
+    nav #navInfo h4 {
+      margin: 0;
+    }
+    nav #navInfo a {
+      margin-right: 1vw;
+      color: #000;
+      text-decoration: none;
+      font-size: 1.25vw;
+    }
+  nav #personalInfo{
+    padding-right: 15%;
+    color: #000;
+    text-decoration: none;
+    text-align: left;
+    font-size: 1.25vw;
+  }
+    nav #personalInfo h4{
+      margin: 0;
+    }
 
-nav a {
-  margin-right: 16px;
-  color: #000;
-  text-decoration: none;
-  font-size: 1.5vw;
-}
