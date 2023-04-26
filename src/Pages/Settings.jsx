@@ -9,12 +9,17 @@ export const Settings = () => {
 
     return(
         <BudgetProvider>
-            <div>
-                <h1>Settings:</h1>
-            </div>
-            <div>
-                <AddSettingsForm/>
-            </div>
+            <div id="box">
+                <div id="container">
+                    <div id='header'>
+                            <h1>Settings</h1>
+                        </div>
+                        <div>
+                            <AddSettingsForm/>
+                        </div>
+                    </div> 
+                </div>
+            
         </BudgetProvider>
     )
 }

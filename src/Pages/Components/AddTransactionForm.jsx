@@ -36,6 +36,7 @@ const AddTransactionForm = () => {
                     required='required'
                     type='text' 
                     id='category'
+                    placeholder="Descrition"
                     value={category}
                     onChange={(event) => setCategory(event.target.value)}
                 />
@@ -46,6 +47,7 @@ const AddTransactionForm = () => {
                 required='required'
                 type='text'
                 id='amount'
+                placeholder="Price (-)"
                 value={amount}
                 onChange={(event) => setAmount(event.target.value)}
                 />

@@ -14,7 +14,7 @@ const TransactionItem = (prop) => {
     return (
         <li className="transactionItem">
             {prop.category}
-            <div>
+            <div className="transactionItemButton">
                 <span>
                     ${(prop.amount).toFixed(2)}  
                 </span>

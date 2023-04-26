@@ -32,15 +32,15 @@ const BudgetReducer = (state, action) => {
 
 
 const InitialState = {
-    budget: 100,
-    month: '',
+    budget: 1000,
+    title: 'Test',
     transactions: [],  
 };
 
 const GetInitialState = () => {
     let state = {
         budget: JSON.parse(localStorage.getItem('budget')),
-        month: '',
+        title: 'Test',
         transactions: [],
     };
     

@@ -17,7 +17,7 @@ const Income = () => {
 
     return (
         <div className="IncomeTracker">
-            <span>Income: ${ ( moreIncome ).toFixed(2) }</span>
+            <span>-Income- <br/> ${ ( moreIncome ).toFixed(2) }</span>
         </div>
     );
 };

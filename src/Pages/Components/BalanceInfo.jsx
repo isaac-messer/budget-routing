@@ -6,7 +6,7 @@ const Budget = () => {
     
     const expenses = transactions.reduce((accumulatorExpense, current) => {    
         if (current.amount < 0) {
-            console.log(`${current.amount} is negative`);
+            // console.log(`${current.amount} is negative`);
             return (accumulatorExpense += current.amount); 
         } else if (current.amount > 0) {
             return (accumulatorExpense)
@@ -14,7 +14,7 @@ const Budget = () => {
     }, 0);
     const moreIncome = transactions.reduce((accumulatorIncome, current) => {   
         if (current.amount > 0) {
-            console.log(`${current.amount} is positive`);
+            // console.log(`${current.amount} is positive`);
             return (accumulatorIncome += current.amount); 
         } else if (current.amount < 0) {
             return (accumulatorIncome)
@@ -23,7 +23,7 @@ const Budget = () => {
 
     return (
         <div className="balanceTracker">
-            <span>Balance: ${ ( moreIncome + expenses ).toFixed(2)}</span>
+            <span>-Balance- <br/> ${ ( moreIncome + expenses ).toFixed(2)}</span>
         </div>
     );
 };

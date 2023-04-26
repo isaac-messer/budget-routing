@@ -17,7 +17,7 @@ const Expenses = () => {
 
     return (
         <div className="expensesTracker">
-            <span>Expenses: -${Math.abs(expenses).toFixed(2)}</span>
+            <span>-Expenses- <br/> -${Math.abs(expenses).toFixed(2)}</span>
         </div>
     );
 };
