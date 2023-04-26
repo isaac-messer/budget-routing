@@ -3,11 +3,13 @@ import { BudgetContext } from "../Context";
 
 const Budget = () => {
     const { transactions, budget } = useContext(BudgetContext);
+    console.log(budget);
     
     const expenses = transactions.reduce((accumulatorExpense, current) => {    
         if (current.amount < 0) {
             // console.log(`${current.amount} is negative`);
             return (accumulatorExpense += current.amount); 
+            
         } else if (current.amount > 0) {
             return (accumulatorExpense)
         };
