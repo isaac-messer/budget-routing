@@ -13,10 +13,18 @@ code {
 }
 
 nav {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 8%;
+  border-bottom: 2px solid #000;
+  border-radius: 5%;
   background-color: aliceblue;
   padding: 16px 32px;
 }
 
 nav a {
   margin-right: 16px;
+  color: #000;
+  text-decoration: none;
+  font-size: 1.5vw;
 }
