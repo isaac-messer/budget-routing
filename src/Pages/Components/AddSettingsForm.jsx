@@ -2,30 +2,65 @@ import react, { useContext, useState } from 'react';
 import { BudgetContext } from '../Context';
 
 const AddSettingsForm = () => {
-    const { budget, title, dispatch } = useContext(BudgetContext);
+    const { budget, title, user, dispatch } = useContext(BudgetContext);
     
-    const [ newTitle, setNewTitle ] = useState('');
-    const [ income, setIncome ] = useState('');
+    const [ newUser, setUser] = useState('');
+    const [ newTitle, setTitle ] = useState('');
+    const [ newBudget, setBudget ] = useState('');
 
     const UpdateInfo = (event) => {
         event.preventDefault();
-        console.log(income);
 
         const information = {
-            income: Number(income)
+            budget: Number(newBudget),
+            title: newTitle,
+            user: newUser,
         };
 
-        dispatch({
-            type: 'UPDATE_BUDGET',
-            payload: information,
-        })
-        // localStorage.setItem('income', JSON.stringify(budget));
-        setIncome('');
-    }
+        if (newUser !== ''){
+            dispatch({
+                type: 'UPDATE_SETTINGS_USER',
+                payload: information,
+            });
+
+            console.log(newUser);
+            setUser('');
+            window.location.reload();
+        };
+        if (newTitle !== ''){
+            dispatch({
+                type: 'UPDATE_SETTINGS_TITLE',
+                payload: information,
+            });
+
+            console.log(newTitle);
+            setTitle('');
+            window.location.reload();
+        };
+        if (newBudget !== ''){
+            dispatch({
+                type: 'UPDATE_SETTINGS_BUDGET',
+                payload: information,
+            });
+
+            console.log(newBudget);
+            setBudget('');
+        };
+    };
 
     return (
         <>
             <form id='settingsForm' onSubmit={UpdateInfo}>
+                <div id="userInput">
+                    <label htmlFor="user">User</label>
+                    <input 
+                        type="text"
+                        id="user" 
+                        placeholder={`${(user)}`} 
+                        value={newUser}
+                        onChange={(event) => setUser(event.target.value)}
+                    />   
+                </div>
                 <div id="titleInput">
                     <label htmlFor="title">Title</label>
                     <input 
@@ -33,7 +68,7 @@ const AddSettingsForm = () => {
                         id="title" 
                         placeholder={`${(title)}`} 
                         value={newTitle}
-                        onChange={(event) => setNewTitle(event.target.value)}
+                        onChange={(event) => setTitle(event.target.value)}
                     />   
                 </div>
                 <div id="budgetInput">
@@ -41,9 +76,9 @@ const AddSettingsForm = () => {
                     <input 
                         type="text"
                         id="budget" 
-                        placeholder={`$${(budget)}`} 
-                        value={income}
-                        onChange={(event) => setIncome(event.target.value)}
+                        placeholder={`$${(budget).toFixed(2)}`} 
+                        value={newBudget}
+                        onChange={(event) => setBudget(event.target.value)}
                     />    
                 </div>
                 <div id="settingsUpdateButton">
