@@ -6,6 +6,21 @@ const BudgetReducer = (state, action) => {
     
     
     switch (action.type) {
+        case 'UPDATE_SETTINGS_BUDGET': localStorage.setItem('budget', JSON.stringify(action.payload.budget));
+            return {
+                ...state,
+                budget: action.payload.budget,
+            };
+        case 'UPDATE_SETTINGS_TITLE': localStorage.setItem('title', JSON.stringify(action.payload.title));
+            return {
+                ...state,
+                title: action.payload.title
+            };
+        case 'UPDATE_SETTINGS_USER': localStorage.setItem('user', JSON.stringify(action.payload.user));
+            return {
+                ...state,
+                user: action.payload.user,
+            };
         case 'ADD_TRANSACTION':
             
             return {
@@ -19,11 +34,6 @@ const BudgetReducer = (state, action) => {
                     (transaction) => transaction.id !== action.payload
                 ),
             };
-        case 'UPDATE_BUDGET': localStorage.setItem('budget', JSON.stringify(action.payload.budget));
-            return {
-                ...state,
-                budget: action.payload.income,
-            }
         default:
             return state;
     };
@@ -32,15 +42,17 @@ const BudgetReducer = (state, action) => {
 
 
 const InitialState = {
-    budget: 1000,
-    title: 'Test',
+    budget: 0,
+    title: 'Enter Title',
+    user: 'Enter User',
     transactions: [],  
 };
 
 const GetInitialState = () => {
     let state = {
         budget: JSON.parse(localStorage.getItem('budget')),
-        title: 'Test',
+        title: JSON.parse(localStorage.getItem('title')),
+        user: JSON.parse(localStorage.getItem('user')),
         transactions: [],
     };
     
@@ -50,13 +62,16 @@ const GetInitialState = () => {
 export const BudgetContext = createContext();
 
 export const BudgetProvider = (prop) => {
-    const [state, dispatch] = useReducer(BudgetReducer, InitialState);
+    const [state, dispatch] = useReducer(BudgetReducer, GetInitialState());
 
     return (
         <BudgetContext.Provider
             value={{
                 transactions: state.transactions,
                 budget: state.budget,
+                title: state.title,
+                user: state.user,
+
                 dispatch,
             }}
         >   {prop.children}    
