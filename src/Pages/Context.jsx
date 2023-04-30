@@ -6,6 +6,8 @@ const BudgetReducer = (state, action) => {
     
     
     switch (action.type) {
+
+// Settings Value Actions
         case 'UPDATE_SETTINGS_BUDGET': localStorage.setItem('budget', JSON.stringify(action.payload.budget));
             return {
                 ...state,
@@ -21,19 +23,23 @@ const BudgetReducer = (state, action) => {
                 ...state,
                 user: action.payload.user,
             };
-        case 'ADD_TRANSACTION':
-            
+
+// Transaction History Actions
+        case 'ADD_TRANSACTION': 
+
             return {
                 ...state,
                 transactions: [...state.transactions, action.payload],
-            };
-            
+            };            
         case 'DELETE_TRANSACTION':
+
             return {
                 transactions: state.transactions.filter(
                     (transaction) => transaction.id !== action.payload
                 ),
             };
+
+// Default Value
         default:
             return state;
     };
@@ -53,7 +59,7 @@ const GetInitialState = () => {
         budget: JSON.parse(localStorage.getItem('budget')),
         title: JSON.parse(localStorage.getItem('title')),
         user: JSON.parse(localStorage.getItem('user')),
-        transactions: [],
+        transactions: JSON.parse(localStorage.getItem('transactions')),
     };
     
     return state ? state : InitialState;
