@@ -2,7 +2,8 @@ import React, { useContext } from "react";
 import { BudgetContext } from "../Context";
 
 const Income = () => {
-    const { budget, transactions } = useContext(BudgetContext);
+    const { transactions } = useContext(BudgetContext);
+    let budget = JSON.parse(localStorage.getItem('budget'));
 
     const moreIncome = transactions.reduce((accumulator, current) => {
         
@@ -17,7 +18,7 @@ const Income = () => {
 
     return (
         <div className="IncomeTracker">
-            <span>-Income- <br/> ${ ( moreIncome ).toFixed(2) }</span>
+            <span>-Income- <br/> ${ ( budget + moreIncome ).toFixed(2) }</span>
         </div>
     );
 };
