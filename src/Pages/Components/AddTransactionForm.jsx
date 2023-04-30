@@ -23,6 +23,10 @@ const AddTransactionForm = () => {
             payload: transaction,
         });
 
+            let transactionStateADD = JSON.parse(localStorage.getItem('transactions')) ? JSON.parse(localStorage.getItem('transactions')) : [] ;
+            transactionStateADD.push(transaction);
+            localStorage.setItem('transactions', JSON.stringify(transactionStateADD));
+
         setCategory('');
         setAmount('');
 
