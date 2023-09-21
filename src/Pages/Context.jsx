@@ -45,24 +45,56 @@ const BudgetReducer = (state, action) => {
     };
 };
 
-
-
-const InitialState = {
-    budget: 0,
-    title: 'Enter Title',
-    user: 'Enter User',
-    transactions: [],  
-};
-
 const GetInitialState = () => {
-    let state = {
-        budget: JSON.parse(localStorage.getItem('budget')),
-        title: JSON.parse(localStorage.getItem('title')),
-        user: JSON.parse(localStorage.getItem('user')),
-        transactions: JSON.parse(localStorage.getItem('transactions')),
-    };
     
-    return state ? state : InitialState;
+    let state = []
+
+    if  (
+        JSON.parse(localStorage.getItem('transactions')) == null 
+        || JSON.parse(localStorage.getItem('budget')) == null 
+        || JSON.parse(localStorage.getItem('title')) == null 
+        || JSON.parse(localStorage.getItem('user')) == null
+    ){
+
+        localStorage.setItem('budget', JSON.stringify(0));
+        localStorage.setItem('title', JSON.stringify('Enter Title'));
+        localStorage.setItem('user', JSON.stringify('Enter User'));
+        localStorage.setItem('transactions', JSON.stringify([]))
+
+        let defaultState = {
+            budget: 0,
+            title: 'Enter Title',
+            user: 'Enter User',
+            transactions: [],
+        };
+
+        console.log(`Using Default`)
+
+        state = defaultState;
+
+    } else if (
+        JSON.parse(localStorage.getItem('transactions')) != null 
+        && JSON.parse(localStorage.getItem('budget')) != null 
+        && JSON.parse(localStorage.getItem('title')) != null 
+        && JSON.parse(localStorage.getItem('user')) != null
+    ){
+
+        let localstorageState = {
+            budget: JSON.parse(localStorage.getItem('budget')),
+            title: JSON.parse(localStorage.getItem('title')),
+            user: JSON.parse(localStorage.getItem('user')),
+            transactions: JSON.parse(localStorage.getItem('transactions')),
+        };
+
+        console.log(`Using Local`)
+
+        state = localstorageState
+
+    } else {
+        alert ('ERROR: Application State Could Not Be Determined')
+    };
+
+    return state
 }
 
 export const BudgetContext = createContext();

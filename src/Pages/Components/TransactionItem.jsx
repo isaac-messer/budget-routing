@@ -11,11 +11,11 @@ const TransactionItem = (prop) => {
         });
 
     let transactionStateDELETE = JSON.parse(localStorage.getItem('transactions')) ? JSON.parse(localStorage.getItem('transactions')) : [] ;
-    console.log(transactionStateDELETE);
-    console.log(prop.id);
+
     let newTransactionState = transactionStateDELETE.filter(
             (transactions) => transactions.id != prop.id
     );
+    
     localStorage.setItem('transactions', JSON.stringify(newTransactionState));
     };
 
